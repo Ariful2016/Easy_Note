@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="todo"
+            type="com.bangla.nobijider.kahini.todo_kotlin.entities.TodoModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        android:layout_margin="1dp"
+        app:contentPadding="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/normal_star_24"
+                android:layout_marginEnd="16dp"
+                app:setPriorityIcon="@{todo.priority}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text = " world hello world hello world "
+                android:text="@{todo.name}"
+                android:textSize="18sp"
+                android:fontFamily="@font/new_rocker"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintEnd_toStartOf="@id/isCompleted"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text = "18/11/2022"
+                android:fontFamily="@font/new_rocker"
+                android:layout_marginStart="10dp"
+                android:justificationMode="inter_word"
+                app:setFormattedDate="@{todo.date}"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintTop_toBottomOf="@id/text"/>
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text = "05:40 pm"
+                app:setFormattedTime="@{todo.time}"
+                android:fontFamily="@font/new_rocker"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@id/date"
+                app:layout_constraintTop_toBottomOf="@id/text"/>
+
+            <CheckBox
+                android:id="@+id/isCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@{todo.completed}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>
